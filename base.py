@@ -6,16 +6,20 @@ class Player:
     self.placements = set()
     self.status = "pending"
 
-
 class Game:
   def __init__(self, dim):
     self.player1 = Player()
     self.player2 = Player()
     self.board = [['.' for _ in range(dim)] for _ in range(dim)]
 
+  def displayBoard(self):
+    for row in self.board:
+      print(row)
 
   def placeStone(self, player, x, y) -> list:
-    # this function should return if the stone placed was in bound and follows the rules
+    # 
+
+    if player == 2:
 
 
     if x >= len(self.board) or y >= len(self.board):
@@ -48,7 +52,6 @@ class Game:
       for i in range(8):
         tmpX, tmpY = x, y
         counter = 0
-
 
         if i == 0:
           while tmpX >= 0 and tmpY >= 0 and self.board[tmpX][tmpY] == 'x':
@@ -93,16 +96,10 @@ class Game:
           while tmpY >= 0 and self.board[tmpX][tmpY] == 'x':
             counter += 1
             tmpY -= 1
-       
-
 
       for i in range(4):
         if surroundings[i] + surroundings[i+4] - 1 >= 5:
-          return [True, 1]
+          # case where white wins
+          return [True, 2]
    
-    return [True, 2]
-
-
-
-
-
+    return [True, 3]
