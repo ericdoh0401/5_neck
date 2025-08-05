@@ -32,7 +32,7 @@ class Player2:
           surroundings[i] += 1
           tmpY += 1
     
-      if i == 4:
+      elif i == 4:
         while tmpX < len(board) and tmpY < len(board[0]) and self.board[tmpX][tmpY] == 'x':
           surroundings[i] += 1
           tmpX += 1
