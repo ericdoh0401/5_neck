@@ -12,15 +12,13 @@ class Game:
     self.player2 = Player()
     self.board = [['.' for _ in range(dim)] for _ in range(dim)]
 
+
   def displayBoard(self):
     for row in self.board:
       print(row)
 
   def placeStone(self, player, x, y) -> list:
-    # 
-
-    if player == 2:
-
+    # this function should return if the stone placed was in bound and follows the rules
 
     if x >= len(self.board) or y >= len(self.board):
       print("This is an invalid placement. Please choose a different coordinate")
@@ -52,6 +50,7 @@ class Game:
       for i in range(8):
         tmpX, tmpY = x, y
         counter = 0
+
 
         if i == 0:
           while tmpX >= 0 and tmpY >= 0 and self.board[tmpX][tmpY] == 'x':
@@ -96,10 +95,11 @@ class Game:
           while tmpY >= 0 and self.board[tmpX][tmpY] == 'x':
             counter += 1
             tmpY -= 1
+       
 
       for i in range(4):
         if surroundings[i] + surroundings[i+4] - 1 >= 5:
-          # case where white wins
-          return [True, 2]
+          # case
+          return [True, 1]
    
-    return [True, 3]
+    return [True, 2]
