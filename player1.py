@@ -13,7 +13,7 @@ class Player1:
 
       con1, sep1, con2, sep2 = len1[0][1], len1[1][1], len2[0][1], len2[1][1]
 
-      
+      # is x x x . x . x x (considered a separated three)
 
   def blackSurroundings(self, coord):
 
