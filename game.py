@@ -21,3 +21,5 @@ class Game:
       if currentStatus:
         # this means that player 2 has won
         self.gameStatus = False
+
+      return True
