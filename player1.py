@@ -2,10 +2,23 @@ class Player1:
   def __init__(self):
     self.placements = set()
 
+  def getCoordinate(self, coord):
+
+    surr = self.blackSurroundings(coord)
+
+    numberOfThrees = 0
+
+    for i in range(4):
+      len1, len2 = surr[i], surr[i+4]
+
+      con1, sep1, con2, sep2 = len1[0][1], len1[1][1], len2[0][1], len2[1][1]
+
+      
+
   def blackSurroundings(self, coord):
 
     surroundings = defaultdict(list)
-    
+
     for i in range(8):
       surroundings[i] = [['con', 0], ['sep', 0]]
       stack, tmpX, tmpY, cnt = [], 0, 0, 0
@@ -130,6 +143,8 @@ class Player1:
             cnt += 1
             
           tmpY -= 1
+    
+    return surroundings
       
 
 
