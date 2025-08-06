@@ -1,5 +1,4 @@
-from base.py import Game
-from base import *
+import game
 
 if __name__ == "__main__":
 
