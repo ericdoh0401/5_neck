@@ -2,18 +2,33 @@ class Player1:
   def __init__(self):
     self.placements = set()
 
-  def getCoordinate(self, coord):
+  def isSixGreater(self, con1, con2):
+    if con1 + con2 - 1 >= 6:
+      return True
 
+    return False
+
+  def isValidPlacement(self, coord):
     surr = self.blackSurroundings(coord)
 
-    numberOfThrees = 0
+    numberOfThrees, longestLengths = 0, defaultdict(int)
 
     for i in range(4):
       len1, len2 = surr[i], surr[i+4]
 
       con1, sep1, con2, sep2 = len1[0][1], len1[1][1], len2[0][1], len2[1][1]
 
-      # is x x x . x . x x (considered a separated three)
+      if self.isSixGreater(con1, con2):
+        return False
+
+      longestLengths[i] = max(con1 + sep2, con2 + sep1)
+
+    for i in range(3):
+      for j in range(i+1, 4):
+        if longestLengths[i] == 3 and longestLengths[j] == 3:
+          return False
+      
+    return True
 
   def blackSurroundings(self, coord):
 
