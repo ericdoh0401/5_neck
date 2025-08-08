@@ -1,10 +1,22 @@
 class Player1:
   def __init__(self):
     self.placements = set()
+    self.surroundings = defaultdict(list)
+    self.isValid = False
 
   def isSixGreater(self, con1, con2):
     if con1 + con2 - 1 >= 6:
       return True
+
+    return False
+
+  def makeFive(self):
+    if self.isValid:
+      for i in range(4):
+        con1, con2 = len1[0][1], len2[0][1]
+
+        if con1 + con2 - 1 == 5:
+          return True
 
     return False
 
@@ -27,12 +39,14 @@ class Player1:
       for j in range(i+1, 4):
         if longestLengths[i] == 3 and longestLengths[j] == 3:
           return False
-      
+
+    self.isValid = True
     return True
 
   def blackSurroundings(self, coord):
 
-    surroundings = defaultdict(list)
+    self.surroundings = defaultdict(list)
+    self.isValid = False
 
     for i in range(8):
       surroundings[i] = [['con', 0], ['sep', 0]]
