@@ -7,7 +7,6 @@ class Board:
   def __init__(self, dim):
     self.board = [['.' for _ in range(dim)] for _ in range(dim)]
 
-
   def displayBoard(self):
     for row in self.board:
       print(row)
@@ -17,7 +16,6 @@ class Board:
 
     if player == 0:
       self.board[x][y] = 'o'
-
-
+      
     else:
       self.board[x][y] = 'x'
