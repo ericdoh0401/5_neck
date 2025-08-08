@@ -3,6 +3,12 @@ class Player2:
     self.placements = set()
 
   def checkAndSee(self, coord):
+    # Parameters:
+    # coord (tuple) -> the coordinate of the stone that player 2 has placed during his most recent turn
+
+    # Return:
+    # bool -> True if the stone he placed allows player 2 to win, else False
+    
     self.placements.add(coord)
     
     surroundings = defaultdict(int)
