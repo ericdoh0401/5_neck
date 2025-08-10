@@ -18,7 +18,7 @@ class Game:
     # bool -> True if the stone the player places is a valid placement, thus moving onto the next player. False otherwise
 
     if player == 0:
-      valid = self.player1.isValidPlacement(coord)
+      valid = self.player1.isValidPlacement(coord, self.gameBoard)
       if not valid:
         print("This is not a valid placement for your stone. Either it creates a connect-6 or greater or you have created a 삼삼.")
         return False
