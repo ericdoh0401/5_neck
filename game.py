@@ -1,13 +1,14 @@
 import board
 import player1
 import player2
+from collections import defaultdict
 
 class Game:
   def __init__(self, dim):
     self.gameStatus = True
-    self.gameBoard = Board(dim)
-    self.player1 = Player1()
-    self.player2 = Player2()
+    self.gameBoard = board.Board(dim)
+    self.player1 = player1.Player1()
+    self.player2 = player2.Player2()
 
   def makeMove(self, player, coord):
     # Paramters:
@@ -16,6 +17,10 @@ class Game:
 
     # Return:
     # bool -> True if the stone the player places is a valid placement, thus moving onto the next player. False otherwise
+    x, y = coord
+
+    if self.gameBoard.board[x][y] != '.':
+      return False
 
     if player == 0:
       valid = self.player1.isValidPlacement(coord, self.gameBoard)
@@ -34,7 +39,7 @@ class Game:
 
     else:
       self.gameBoard.placeStone(player, coord)
-      currrentStatus = self.player2.checkAndSee(coord)
+      currentStatus = self.player2.checkAndSee(coord, self.gameBoard)
 
       if currentStatus:
         # this means that player 2 has won and the game has ended
