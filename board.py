@@ -2,6 +2,7 @@
 
 # this class will solely be used for the purpose of displaying the board
 # and any possible animations using pygame
+from collections import defaultdict
 
 class Board:
   def __init__(self, dim):
