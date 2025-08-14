@@ -29,6 +29,10 @@ class Player1:
     self.blackSurroundings(coord, board)
     
     x, y = coord
+    print(self.surroundings)
+    # defaultdict(<class 'list'>, {0: [1, 0], 1: [2, 0], 2: [1, 0], 3: [2, 0], 4: [1, 0], 5: [2, 0], 6: [1, 0], 7: [2, 0]})
+    # (5,5) -> (4,6) -> (4,4) -> (3,5) -> (4,5)
+    board.board[x][y] = '.'
 
     numberOfThrees, longestLengths = 0, defaultdict(int)
 
@@ -52,13 +56,16 @@ class Player1:
     return True
 
   def blackSurroundings(self, coord, board):
+    x, y = coord
+    board.board[x][y] = 'o'
 
     self.surroundings = defaultdict(list)
     self.isValid = False
 
     for i in range(8):
-      self.surroundings[i] = [0, 1]
-      stack, tmpX, tmpY, cnt = [], 0, 0, 0
+      self.surroundings[i] = [0, 0]
+      tmpX, tmpY = coord
+      stack, cnt = [], 0
 
       if i == 0:
         while tmpX >= 0 and tmpY >= 0 and board.board[tmpX][tmpY] == 'o':
@@ -78,7 +85,7 @@ class Player1:
     
       elif i == 1:
         while tmpX >= 0 and board.board[tmpX][tmpY] == 'o':
-          suroundings[i][0] += 1
+          self.surroundings[i][0] += 1
           tmpX -= 1
       
         while cnt < 2 and tmpX >= 0 and (board.board[tmpX][tmpY] == 'o' or board.board[tmpX][tmpY] == '.'):
@@ -92,7 +99,7 @@ class Player1:
       
       elif i == 2:
         while tmpX >= 0 and tmpY < len(board.board[0]) and board.board[tmpX][tmpY] == 'o':
-          suroundings[i][0] += 1
+          self.surroundings[i][0] += 1
           tmpX -= 1
           tmpY += 1
       
