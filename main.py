@@ -8,7 +8,7 @@ if __name__ == "__main__":
    game, curPlayer = game.Game(boardDim), 0
 
    while game.gameStatus:
-      coord = (input("Where would you like to place your next stone?: ")).split()
+      coord = (input(f"Player {curPlayer + 1}'s turn. Where would you like to place your next stone?: ")).split()
 
       coord = tuple([int(i) for i in coord])
       
