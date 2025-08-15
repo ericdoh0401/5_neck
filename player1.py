@@ -44,12 +44,10 @@ class Player1:
       if self.isSixGreater(con1, con2):
         return False
 
-      longestLengths[i] = max(con1 + sep2, con2 + sep1)
+      longestLengths[max(con1 + con2 + sep2 - 1, con1 + con2 + sep1 - 1)] += 1
 
-    for i in range(3):
-      for j in range(i+1, 4):
-        if longestLengths[i] == 3 and longestLengths[j] == 3:
-          return False
+    if longestLengths[3] > 1:
+      return False
 
     board.board[x][y] = 'o'
     self.isValid = True
