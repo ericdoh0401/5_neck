@@ -3,9 +3,24 @@ import board
 
 class Player1:
   def __init__(self):
-    self.placements = set()
+    self.placements = []
     self.surroundings = defaultdict(list)
     self.isValid = False
+
+  def removePlacement(self, board):
+    if self.placements:
+      mostRecent = self.placements.pop()
+
+      x, y = mostRecent
+
+      board.board[x][y] = '.'
+
+      return True
+    
+    else:
+      print("Player 1. You have no stones to remove.")
+
+      return False
 
   def isSixGreater(self, con1, con2):
     if con1 + con2 - 1 >= 6:
@@ -51,6 +66,8 @@ class Player1:
 
     board.board[x][y] = 'o'
     self.isValid = True
+    self.placements.append(coord)
+
     return True
 
   def blackSurroundings(self, coord, board):
