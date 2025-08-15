@@ -3,7 +3,22 @@ import board
 
 class Player2:
   def __init__(self):
-    self.placements = set()
+    self.placements = []
+
+  def removePlacement(self, board):
+    if self.placements:
+      mostRecent = self.placements.pop()
+
+      x, y = mostRecent
+
+      board.board[x][y] = '.'
+
+      return True
+    
+    else:
+      print("Player 2. You have no stones to remove.")
+
+      return False
 
   def checkAndSee(self, coord, board):
     # Parameters:
@@ -14,7 +29,7 @@ class Player2:
 
     x, y = coord
     
-    self.placements.add(coord)
+    self.placements.append(coord)
     
     surroundings = defaultdict(int)
 
