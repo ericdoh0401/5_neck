@@ -10,6 +10,15 @@ class Game:
     self.player1 = player1.Player1()
     self.player2 = player2.Player2()
 
+  def removeStone(self, player):
+    if player == 0:
+      tof = self.player1.removePlacement(self.gameBoard)
+
+    else:
+      tof = self.player2.removePlacement(self.gameBoard)
+
+    return tof
+
   def makeMove(self, player, coord):
     # Paramters:
     # player (int) -> the player who is to place the stone
